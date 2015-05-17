@@ -1,5 +1,7 @@
 package org.study.recommeandiation;
 
+import java.util.HashMap;
+
 /**
  * Class run/test program
  * 
@@ -22,13 +24,19 @@ public class Main {
 		UserProfiles user = new UserProfiles();
 		user.readFile();
 		User userProfile[] = user.getUserProfiles();
-		
-		for(int i = 0; i < userProfile.length; i++) {
+		CollabotiveFiltering collabotiveFiltering = new CollabotiveFiltering();
+		HashMap<String, Integer> artistOfUser = collabotiveFiltering.getArtistOfUser(userProfile[0]);
+		for(String key : artistOfUser.keySet()) {
+			System.out.println(key + ": " + artistOfUser.get(key));
+		}
+		System.out.println("SIZE:" + artistOfUser.size());
+
+		/*for(int i = 0; i < userProfile.length; i++) {
 			System.out.println("ID: " + userProfile[i].getUserId() + ", gender: " 
 		+ userProfile[i].getGender() + ", age: " + userProfile[i].getAge() + 
 		", country: " + userProfile[i].getCountry() + ", signup: " + userProfile[i].
 		getSignup());
-		}
+		}*/
 		
 		/*String test = "user_000030					c";
 		String arr[] = test.split("\t");

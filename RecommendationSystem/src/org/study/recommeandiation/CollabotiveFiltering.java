@@ -41,11 +41,14 @@ public class CollabotiveFiltering {
 		HashMap<String, Integer> artistOfUser = new HashMap<String, Integer>();
 		String userId = user.getUserId();
 		HashMap<String, Integer> utilityHashMap = this.utilityMatrix.getUtilityHashMap();
-
+		String processException;
+		
 		for(String key : utilityHashMap.keySet()) {
-			String userIdAndArtistId[] = key.split(":");
+			processException = key + ":$";
+			String userIdAndArtistId[] = processException.split(":");
 			if(userId.equals(userIdAndArtistId[0])) {
 				artistOfUser.put(userIdAndArtistId[1], utilityHashMap.get(key));
+				//System.out.println(key + ": " + utilityHashMap.get(key));
 			}
 		}
 
