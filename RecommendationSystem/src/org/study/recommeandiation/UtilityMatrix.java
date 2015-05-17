@@ -24,6 +24,15 @@ public class UtilityMatrix {
 			+ "artname-traid-traname.tsv";
 	
 	/**
+	 * Getter of utilitiHashMap
+	 * 
+	 * @return	: utilityHashMap
+	 */
+	public	Map<String, Integer> getUtilityHashMap() {
+		return this.utilityHashMap;
+	}
+
+	/**
 	 * Function read input file and put data to utilityHashMap.
 	 */
 	public void generatingUtilityMatrix() {

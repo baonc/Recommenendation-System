@@ -9,8 +9,14 @@ package org.study.recommeandiation;
  */
 public class Main {
 	public static void main(String args[]) {
-		UtilityMatrix uti = new UtilityMatrix();
+		/*UtilityMatrix uti = new UtilityMatrix();
 		uti.generatingUtilityMatrix();
-		uti.test();
+		uti.test();*/
+		String testString = "a		b";
+		String testSplit[] = testString.split("\t");
+		
+		for(int i = 0; i < testSplit.length; i++) {
+			System.out.println("\"" + testSplit[i] + "\"");
+		}
 	}
 }
