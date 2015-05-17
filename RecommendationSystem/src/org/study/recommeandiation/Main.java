@@ -23,17 +23,18 @@ public class Main {
 		user.readFile();
 		User userProfile[] = user.getUserProfiles();
 		
-		/*for(int i = 0; i < userProfile.length; i++) {
-			System.out.println("ID: " + userProfile[0] + ", gender: " + userProfile[1] + 
-					", age: " + userProfile[2] + ", country: " + userProfile[3] + 
-					", signup: " + userProfile[4]);
-		}*/
+		for(int i = 0; i < userProfile.length; i++) {
+			System.out.println("ID: " + userProfile[i].getUserId() + ", gender: " 
+		+ userProfile[i].getGender() + ", age: " + userProfile[i].getAge() + 
+		", country: " + userProfile[i].getCountry() + ", signup: " + userProfile[i].
+		getSignup());
+		}
 		
-		String test = "user_000030					c";
+		/*String test = "user_000030					c";
 		String arr[] = test.split("\t");
 		System.out.println(arr.length);
 		for(int i = 0; i < arr.length; i++) {
 			System.out.println("\"" + arr[i] + "\"");
-		}
+		}*/
 	}
 }

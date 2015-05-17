@@ -49,13 +49,11 @@ public class UserProfiles {
 				dataArray = line.split("\t");
 				
 				userId.append(dataArray[0]);
-				/*if(dataArray[1].equals("")) {
+				if(dataArray[1].equals("")) {
 					gender = ' ';
 				} else {
 					gender = dataArray[1].charAt(0);
-				}*/
-				gender = ' ';
-				System.out.println((index + 1) + ": " + dataArray[1]);
+				}
 				age.append(dataArray[2]);
 				country.append(dataArray[3]);
 				signup.append(dataArray[4]);
