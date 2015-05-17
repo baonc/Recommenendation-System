@@ -25,7 +25,7 @@ public class Main {
 		user.readFile();
 		User userProfile[] = user.getUserProfiles();
 		CollabotiveFiltering collabotiveFiltering = new CollabotiveFiltering();
-		HashMap<String, Integer> artistOfUser = collabotiveFiltering.getArtistOfUser(userProfile[0]);
+		HashMap<String, Integer> artistOfUser = collabotiveFiltering.getArtistOfUser(userProfile[2]);
 		for(String key : artistOfUser.keySet()) {
 			System.out.println(key + ": " + artistOfUser.get(key));
 		}
