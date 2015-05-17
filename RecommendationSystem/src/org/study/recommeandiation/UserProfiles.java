@@ -43,11 +43,19 @@ public class UserProfiles {
 		try(InputStream in = Files.newInputStream(Paths.get(UserProfiles.INPUT_FILE));
 				BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
 			int index = 0;
+			line = reader.readLine();
 			while((line = reader.readLine()) != null) {
+				line += "\t$";
 				dataArray = line.split("\t");
 				
 				userId.append(dataArray[0]);
-				gender = dataArray[1].charAt(0);
+				/*if(dataArray[1].equals("")) {
+					gender = ' ';
+				} else {
+					gender = dataArray[1].charAt(0);
+				}*/
+				gender = ' ';
+				System.out.println((index + 1) + ": " + dataArray[1]);
 				age.append(dataArray[2]);
 				country.append(dataArray[3]);
 				signup.append(dataArray[4]);
