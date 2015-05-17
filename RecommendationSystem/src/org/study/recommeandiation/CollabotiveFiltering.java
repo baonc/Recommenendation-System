@@ -1,5 +1,7 @@
 package org.study.recommeandiation;
 
+import java.util.HashMap;
+
 /**
  * Recommendation System using collabotive filtering<br>
  * 
@@ -23,7 +25,30 @@ public class CollabotiveFiltering {
 		this.userProfile.readFile();
 	}
 	
-	public int[] neighbour() {
-		
+	/**
+	 * Class get top NUMBER_NEIGHBOURS of a user
+	 * 
+	 * @param user	: user
+	 * @return		: index of top neighbours in userProfile
+	 */
+	public int[] neighbourOfUser(User user) {
+		int neighbour[] = new int[CollabotiveFiltering.NUMBER_NEIGHBOURS];
+		// do not done.
+		return neighbour;
+	}
+	
+	public HashMap<String, Integer> getArtistOfUser(User user) {
+		HashMap<String, Integer> artistOfUser = new HashMap<String, Integer>();
+		String userId = user.getUserId();
+		HashMap<String, Integer> utilityHashMap = this.utilityMatrix.getUtilityHashMap();
+
+		for(String key : utilityHashMap.keySet()) {
+			String userIdAndArtistId[] = key.split(":");
+			if(userId.equals(userIdAndArtistId[0])) {
+				artistOfUser.put(userIdAndArtistId[1], utilityHashMap.get(key));
+			}
+		}
+
+		return artistOfUser;
 	}
 }
