@@ -11,7 +11,7 @@ package org.study.recommeandiation;
 public class User {
 	private String userId;																  // user id
 	private char gender;																  // gender of user
-	private int age;																	  // age of user
+	private String age;																	  // age of user
 	private String country;																  // country of user
 	private String signup;																  // time signup
 	
@@ -24,7 +24,7 @@ public class User {
 	 * @param coutry	: contry of user
 	 * @param signup	: date signup of user
 	 */
-	public User(String userId, char gender, int age, String coutry, String signup) {
+	public User(String userId, char gender, String age, String coutry, String signup) {
 		this.userId = userId;
 		this.gender = gender;
 		this.age = age;
@@ -72,7 +72,7 @@ public class User {
 	 * 
 	 * @param age	: age of this instance
 	 */
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	
@@ -81,7 +81,7 @@ public class User {
 	 * 
 	 * @return	: age of this instance
 	 */
-	public int getAge() {
+	public String getAge() {
 		return this.age;
 	}
 	
