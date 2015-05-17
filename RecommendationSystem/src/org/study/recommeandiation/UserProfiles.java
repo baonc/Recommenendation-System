@@ -14,16 +14,16 @@ import java.nio.file.Paths;
  *
  */
 public class UserProfiles {
-	private User userProfiles[];																  // array contain user profile of lasf.fm
+	private User userProfiles[];														  // array contain user profile of lasf.fm
 	
-	private static final String INPUT_FILE = "data/userid-profile.tsv";
+	private static final String INPUT_FILE = "data/userid-profile.tsv";					  // input file
 
 	/**
 	 * Setter of user array
 	 * 
 	 * @return	: user array.
 	 */
-	public User[] getUser() {
+	public User[] getUserProfiles() {
 		return this.userProfiles;
 	}
 	
@@ -36,7 +36,7 @@ public class UserProfiles {
 		this.userProfiles = new User[992];
 		StringBuilder userId = new StringBuilder();
 		char gender;
-		int age;
+		StringBuilder age = new StringBuilder();
 		StringBuilder country = new StringBuilder();
 		StringBuilder signup = new StringBuilder();
 		
@@ -48,17 +48,19 @@ public class UserProfiles {
 				
 				userId.append(dataArray[0]);
 				gender = dataArray[1].charAt(0);
-				if(dataArray[2].equals("")) {
-					age = -1;
-				} else {
-					age = Integer.parseInt(dataArray[2]);
-				}
+				age.append(dataArray[2]);
 				country.append(dataArray[3]);
 				signup.append(dataArray[4]);
 				
-				User user = new User(userId.toString(), gender, age, country.toString(),
-						signup.toString());
+				User user = new User(userId.toString(), gender, age.toString(), 
+						country.toString(), signup.toString());
 				this.userProfiles[index] = user;
+				index++;
+				
+				userId.setLength(0);
+				age.setLength(0);
+				country.setLength(0);
+				signup.setLength(0);
 			}
 		} catch(IOException ioe) {
 			ioe.printStackTrace();
