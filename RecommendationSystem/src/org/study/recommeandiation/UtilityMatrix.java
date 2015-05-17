@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Class create utility matrix from file userid-timestamp-artid-artname-traid-
@@ -18,7 +17,7 @@ import java.util.Map;
  *
  */
 public class UtilityMatrix {
-	private Map<String, Integer> utilityHashMap;										  // hash map contain Key: userId:artistId and value: 
+	private HashMap<String, Integer> utilityHashMap;									  // hash map contain Key: userId:artistId and value: 
 																					      // number of trackid on artist id.
 	private static final String INPUT_FILE = "data/userid-timestamp-artid-"				  // input file
 			+ "artname-traid-traname.tsv";
@@ -28,7 +27,7 @@ public class UtilityMatrix {
 	 * 
 	 * @return	: utilityHashMap
 	 */
-	public	Map<String, Integer> getUtilityHashMap() {
+	public	HashMap<String, Integer> getUtilityHashMap() {
 		return this.utilityHashMap;
 	}
 

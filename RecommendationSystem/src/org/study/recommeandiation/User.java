@@ -1,6 +1,5 @@
 package org.study.recommeandiation;
 
-
 /**
  * Class containt user information
  * 
