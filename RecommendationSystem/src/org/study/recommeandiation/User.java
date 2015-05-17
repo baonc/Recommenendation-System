@@ -2,7 +2,7 @@ package org.study.recommeandiation;
 
 
 /**
- * Class containt user id and user profile
+ * Class containt user information
  * 
  * @created 17 / 5 / 2015
  * @author baonc
