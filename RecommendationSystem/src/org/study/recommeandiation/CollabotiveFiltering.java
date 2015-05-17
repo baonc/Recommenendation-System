@@ -22,4 +22,8 @@ public class CollabotiveFiltering {
 		this.userProfile = new UserProfiles();
 		this.userProfile.readFile();
 	}
+	
+	public int[] neighbour() {
+		
+	}
 }
