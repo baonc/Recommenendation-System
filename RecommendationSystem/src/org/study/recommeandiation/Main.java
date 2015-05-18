@@ -21,16 +21,19 @@ public class Main {
 			System.out.println("\"" + testSplit[i] + "\"");
 		}*/
 		
-		UserProfiles user = new UserProfiles();
-		user.readFile();
-		User userProfile[] = user.getUserProfiles();
 		CollabotiveFiltering collabotiveFiltering = new CollabotiveFiltering();
+		UserProfiles user = collabotiveFiltering.getUserProfile();
+		User userProfile[] = user.getUserProfiles();
+
 		HashMap<String, Integer> artistOfUser = collabotiveFiltering.
 				getArtistOfUser(userProfile[2]);
 		HashMap<String, Integer> artistOfUser1 = collabotiveFiltering.
 				getArtistOfUser(userProfile[1]);
 		double distance = Distance.EuclideanDistance(artistOfUser, artistOfUser1);
 		System.out.println("Euclidian distance of user 1 and user2: " + distance);
+		User neighbor = collabotiveFiltering.neighborOfUser(userProfile[1]);
+		System.out.println("Neighbour: " + neighbor.getUserId());
+
 		/*for(int i = 0; i < userProfile.length; i++) {
 			System.out.println("ID: " + userProfile[i].getUserId() + ", gender: " 
 		+ userProfile[i].getGender() + ", age: " + userProfile[i].getAge() + 

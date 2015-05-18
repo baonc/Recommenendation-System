@@ -13,8 +13,6 @@ public class CollabotiveFiltering {
 	private UtilityMatrix utilityMatrix;												  // utility matrix
 	private UserProfiles userProfile;													  // user profile
 	
-	private static final int NUMBER_NEIGHBOURS = 20;									  // number of neighbour of user
-
 	/**
 	 * Constructor read data for utilityMatrix and userProfile
 	 */
@@ -26,17 +24,14 @@ public class CollabotiveFiltering {
 	}
 	
 	/**
-	 * Class get top NUMBER_NEIGHBOURS of a user
+	 * Getter of user profile
 	 * 
-	 * @param user	: user
-	 * @return		: index of top neighbours in userProfile
+	 * @return	: user profile
 	 */
-	public int[] topNeighbourOfUser(User user) {
-		int neighbour[] = new int[CollabotiveFiltering.NUMBER_NEIGHBOURS];
-		// do not done.
-		return neighbour;
+	public UserProfiles getUserProfile() {
+		return this.userProfile;
 	}
-	
+		
 	/**
 	 * Function get artistid of user
 	 * 
@@ -60,5 +55,39 @@ public class CollabotiveFiltering {
 		}
 
 		return artistOfUser;
+	}
+	
+	/**
+	 * Function get neighbour of user<br>
+	 * Neighbour is user with distance to user minimum.<br>
+	 * 
+	 * @param user	: user will be get neighbour
+	 * @return		: neighbour of user
+	 */
+	public User neighborOfUser(User user) {
+		HashMap<String, Integer> artistOfUser = getArtistOfUser(user);
+		User bestNeighbor = null;
+		User userProfile[] = this.userProfile.getUserProfiles();
+		double bestDistance = Double.MAX_VALUE;
+		
+		String userId = user.getUserId();
+		for(int i = 0; i < userProfile.length; i++) {
+			User candidateUser = userProfile[i];
+			String candidateUserId = candidateUser.getUserId();
+			if(!userId.equals(candidateUserId)) {
+				HashMap<String, Integer> artistOfCandidateUser = getArtistOfUser(
+					candidateUser);
+				double distance = Distance.EuclideanDistance(artistOfUser, 
+						artistOfCandidateUser);
+				if(distance < bestDistance) {
+					bestDistance = distance;
+					bestNeighbor = candidateUser;
+				}
+			}
+			System.out.println("Processing user: " + candidateUserId + ", Best neighbour"
+					+ " is: " + bestNeighbor.getUserId());
+		}
+		
+		return bestNeighbor;
 	}
 }
