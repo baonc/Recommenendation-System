@@ -25,12 +25,12 @@ public class Main {
 		user.readFile();
 		User userProfile[] = user.getUserProfiles();
 		CollabotiveFiltering collabotiveFiltering = new CollabotiveFiltering();
-		HashMap<String, Integer> artistOfUser = collabotiveFiltering.getArtistOfUser(userProfile[2]);
-		for(String key : artistOfUser.keySet()) {
-			System.out.println(key + ": " + artistOfUser.get(key));
-		}
-		System.out.println("SIZE:" + artistOfUser.size());
-
+		HashMap<String, Integer> artistOfUser = collabotiveFiltering.
+				getArtistOfUser(userProfile[2]);
+		HashMap<String, Integer> artistOfUser1 = collabotiveFiltering.
+				getArtistOfUser(userProfile[1]);
+		double distance = Distance.EuclideanDistance(artistOfUser, artistOfUser1);
+		System.out.println("Euclidian distance of user 1 and user2: " + distance);
 		/*for(int i = 0; i < userProfile.length; i++) {
 			System.out.println("ID: " + userProfile[i].getUserId() + ", gender: " 
 		+ userProfile[i].getGender() + ", age: " + userProfile[i].getAge() + 

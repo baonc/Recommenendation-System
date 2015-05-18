@@ -31,7 +31,7 @@ public class CollabotiveFiltering {
 	 * @param user	: user
 	 * @return		: index of top neighbours in userProfile
 	 */
-	public int[] neighbourOfUser(User user) {
+	public int[] topNeighbourOfUser(User user) {
 		int neighbour[] = new int[CollabotiveFiltering.NUMBER_NEIGHBOURS];
 		// do not done.
 		return neighbour;
