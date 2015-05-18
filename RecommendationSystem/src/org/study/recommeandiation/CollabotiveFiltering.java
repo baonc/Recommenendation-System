@@ -37,6 +37,13 @@ public class CollabotiveFiltering {
 		return neighbour;
 	}
 	
+	/**
+	 * Function get artistid of user
+	 * 
+	 * @param user	: user will be get artist
+	 * @return		: list artist of user<br>
+	 * <li> Format: HashMap<ArtistID, NumberOfSongUser heard>
+	 */
 	public HashMap<String, Integer> getArtistOfUser(User user) {
 		HashMap<String, Integer> artistOfUser = new HashMap<String, Integer>();
 		String userId = user.getUserId();
