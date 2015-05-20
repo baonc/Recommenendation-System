@@ -1,6 +1,6 @@
 package org.study.recommeandiation;
 
-import java.util.HashMap;
+
 
 /**
  * Class run/test program
@@ -22,17 +22,25 @@ public class Main {
 		}*/
 		
 		CollabotiveFiltering collabotiveFiltering = new CollabotiveFiltering();
-		UserProfiles user = collabotiveFiltering.getUserProfile();
+		collabotiveFiltering.run("user_000993");
+		/*UserProfiles user = collabotiveFiltering.getUserProfile();
 		User userProfile[] = user.getUserProfiles();
-
 		HashMap<String, Integer> artistOfUser = collabotiveFiltering.
 				getArtistOfUser(userProfile[2]);
 		HashMap<String, Integer> artistOfUser1 = collabotiveFiltering.
 				getArtistOfUser(userProfile[1]);
 		double distance = Distance.EuclideanDistance(artistOfUser, artistOfUser1);
 		System.out.println("Euclidian distance of user 1 and user2: " + distance);
-		User neighbor = collabotiveFiltering.neighborOfUser(userProfile[1]);
+
+		User neighbor = collabotiveFiltering.neighborOfUser(userProfile[2]);
 		System.out.println("Neighbour: " + neighbor.getUserId());
+		HashMap<String, Integer> recommendation = collabotiveFiltering.
+				recommendationOfUser(userProfile[2], neighbor);
+		System.out.println("Recommendation for user 1");
+		System.out.println("SIZE: " + recommendation.size());
+		for(String key : recommendation.keySet()) {
+			System.out.println(key + ": " +  recommendation.get(key));
+		}*/
 
 		/*for(int i = 0; i < userProfile.length; i++) {
 			System.out.println("ID: " + userProfile[i].getUserId() + ", gender: " 

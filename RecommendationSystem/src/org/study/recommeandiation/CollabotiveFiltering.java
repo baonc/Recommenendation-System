@@ -31,6 +31,15 @@ public class CollabotiveFiltering {
 	public UserProfiles getUserProfile() {
 		return this.userProfile;
 	}
+	
+	/**
+	 * Getter of utility matrix
+	 * 
+	 * @return	: utility matrix
+	 */
+	public UtilityMatrix getUtilityMarix() {
+		return this.utilityMatrix;
+	}
 		
 	/**
 	 * Function get artistid of user
@@ -50,7 +59,6 @@ public class CollabotiveFiltering {
 			String userIdAndArtistId[] = processException.split(":");
 			if(userId.equals(userIdAndArtistId[0])) {
 				artistOfUser.put(userIdAndArtistId[1], utilityHashMap.get(key));
-				//System.out.println(key + ": " + utilityHashMap.get(key));
 			}
 		}
 
@@ -85,9 +93,53 @@ public class CollabotiveFiltering {
 				}
 			}
 			System.out.println("Processing user: " + candidateUserId + ", Best neighbour"
-					+ " is: " + bestNeighbor.getUserId());
+					+ " is: " + bestNeighbor.getUserId() + ", distance: " + bestDistance);
 		}
 		
 		return bestNeighbor;
+	}
+	
+	/**
+	 * Function recommendation of a user with its neighbour<br>
+	 * 
+	 * @param user			: user recommendation.
+	 * @param neighbour		: best neighbour of user
+	 * @return				: recommendation of user with Key: artistId, Value: number of
+	 * 						  time user heard this artist
+	 */
+	public HashMap<String, Integer> recommendationOfUser(User user, User neighbour) {
+		HashMap<String, Integer> recommendation = new HashMap<String, Integer>();
+		HashMap<String, Integer> artistOfUser = getArtistOfUser(user);
+		HashMap<String, Integer> artistOfNeighbour = getArtistOfUser(neighbour);
+		
+		for(String key : artistOfNeighbour.keySet()) {
+			if(!artistOfUser.containsKey(key)) {
+				recommendation.put(key, artistOfNeighbour.get(key));
+			}
+		}
+		
+		return recommendation;
+	}
+	
+	public void run(String userId) {
+		User users[] = this.userProfile.getUserProfiles();
+		boolean flag = false;
+		
+		for(int i = 0; i < users.length; i++) {
+			if(users[i].getUserId().equals(userId)) {
+				flag = true;
+				User user = users[i];
+				User neighbourOfUser = neighborOfUser(user);
+				System.out.println("Neighbour of: " + userId + " is: " + neighbourOfUser
+						.getUserId());
+				HashMap<String, Integer> recommendation = recommendationOfUser(user, 
+						neighbourOfUser);
+				System.out.println("SIZE: " + recommendation.size());
+				for(String key : recommendation.keySet()) {
+					System.out.println(key + ": " + recommendation.get(key));
+				}
+			}
+		}
+		
 	}
 }
